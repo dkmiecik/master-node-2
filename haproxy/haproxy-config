@@ -1,0 +1,14 @@
+defaults
+  mode http
+  timeout client 10s
+  timeout connect 5s
+  timeout server 10s
+  timeout http-request 10s
+
+frontend myfrontend
+  bind 0.0.0.0:80
+  default_backend myservers
+
+backend myservers
+   mode http
+   server n1 20.79.215.150:80 # dktestmasternode1.germanywestcentral.azurecontainer.io
