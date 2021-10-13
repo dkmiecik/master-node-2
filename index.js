@@ -120,7 +120,7 @@ app.post('/user', async (req, res) => {
             });
             res.status(200).send({ id: restLogin.uuid });
         } catch (e) {
-            res.sendStatus(404);
+            res.status(400).send(e.message);
         }
     });
 });

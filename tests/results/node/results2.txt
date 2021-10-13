@@ -1,0 +1,29 @@
+2 Maszyny
+
+
+Scenariusz 1 Create User
+
+  Scenarios launched:  300
+  Scenarios completed: 290
+  Requests completed:  300
+  Mean response/sec: 4.98
+  Response time (msec):
+    min: 76
+    max: 2032
+    median: 326
+    p95: 1495
+    p99: 1809.5
+  Scenario counts:
+    Create User: 300 (100%)
+  Codes:
+    200: 290
+    404: 10
+
+Scenariusz 2 Login User
+
+
+Scenariusz 3 Edit User
+
+
+Scenariusz 4 Delete User
+
