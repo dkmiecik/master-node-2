@@ -1,5 +1,5 @@
 function printStatus (requestParams, response, context, ee, next) {
-    console.log(`status code: ${response.statusCode}, ${response.message ? response.message : ''}`);
+    console.log(`status code: ${response.statusCode}, ${response.body ? response.body : ''}`);
     return next();
 }
 

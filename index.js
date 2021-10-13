@@ -105,12 +105,13 @@ app.get('/users', authenticateToken, async (req, res) => {
 // CREATE USER
 app.post('/user', async (req, res) => {
     const { body } = req;
+
     await connectDB(async (client) => {
         try {
             const { login, ...rest } = body;
             const { password, ...restLogin } = login;
 
-            const hash = await bcrypt.hash(password, 10);
+            const hash = await bcrypt.hash(password.toString(), 10);
             await client.db("master").collection("users").insertOne({
                 ...rest,
                 login: {
