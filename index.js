@@ -206,7 +206,7 @@ app.post('/user/login', async (req, res) => {
             if (user && user.login) {
                 const match = await bcrypt.compare(password.toString(), user.login.hash.toString());
                 if (match) {
-                    const token = generateAccessToken({ username: login });
+                    const token = generateAccessToken({ id: user.login.uuid });
                     res.set({
                         'Authorization': `Bearer ${token}`,
                     })
@@ -234,10 +234,6 @@ async function connectDB(callback) {
     } catch (e) {
         console.error('connect error:', e);
     }
-    // finally {
-    //     console.log('close connection');
-    //     await client.close();
-    // }
 }
 
 function authenticateToken(req, res, next) {
@@ -257,14 +253,14 @@ function authenticateToken(req, res, next) {
     })
 }
 
-function generateAccessToken(username) {
+function generateAccessToken(data) {
     // expires after half and hour (1800 seconds = 30 minutes)
-    return jwt.sign(username, `${process.env.ACCESS_TOKEN_SECRET}`, { expiresIn: '1800s' });
+    return jwt.sign(data, `${process.env.ACCESS_TOKEN_SECRET}`, { expiresIn: '1800s' });
 }
 
 function getUserFromToken(token) {
     const decoded = jwt.decode(token, {complete: true});
-    return decoded && decoded.payload && decoded.payload.username ? decoded.payload.username : null;
+    return decoded && decoded.payload ? decoded.payload : null;
 }
 
 function mapItem(item) {

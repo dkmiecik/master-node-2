@@ -6,13 +6,13 @@ Scenariusz 1 Create User
   Scenarios launched:  300
   Scenarios completed: 300
   Requests completed:  300
-  Mean response/sec: 4.98
+  Mean response/sec: 4.89
   Response time (msec):
-    min: 248
-    max: 2521
-    median: 347
-    p95: 1331.5
-    p99: 1449
+    min: 247
+    max: 1815
+    median: 301
+    p95: 1317.5
+    p99: 1436
   Scenario counts:
     Create User: 300 (100%)
   Codes:
@@ -20,6 +20,25 @@ Scenariusz 1 Create User
 
 
 Scenariusz 2 Login User
+
+  Scenarios launched:  300
+  Scenarios completed: 149
+  Requests completed:  498
+  Mean response/sec: 9.92
+  Response time (msec):
+    min: 123
+    max: 2878
+    median: 145
+    p95: 1273.6
+    p99: 1432.4
+  Scenario counts:
+    Login: 300 (100%)
+  Codes:
+    200: 447
+    404: 50
+    502: 1
+  Errors:
+    ECONNRESET: 100
 
 
 Scenariusz 3 Edit User

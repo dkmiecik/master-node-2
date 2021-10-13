@@ -54,39 +54,39 @@ config:
       - "picture__thumbnail"
       - "nat"
 scenarios:
-  - name: "Create User"
-    flow:
-      - post:
-          url: "/user"
-          json:
-            gender: "{{gender}}"
-            name:
-              title: "{{name__title}}"
-              first: "{{name__first}}"
-              last: "{{name__last}}"
-            location:
-              street:
-                number: "something"
-                name: "{{location__street__name}}"
-              city: "{{location__city}}"
-              state: "{{location__state}}"
-              country: "{{location__country}}"
-              postcode: "something"
-            email: "{{email}}"
-            login:
-              uuid: "{{login__uuid}}"
-              password: "{{login__password}}"
-              username: "{{login__username}}"
-            phone: "phone"
-            nat: "{{nat}}"
-            picture:
-              large: "{{picture__large}}"
-              medium: "{{picture__medium}}"
-              thumbnail: "{{picture__thumbnail}}"
-          capture:
-            - json: $.id
-              as: userId
-          afterResponse: "printStatus"
+#  - name: "Create User"
+#    flow:
+#      - post:
+#          url: "/user"
+#          json:
+#            gender: "{{gender}}"
+#            name:
+#              title: "{{name__title}}"
+#              first: "{{name__first}}"
+#              last: "{{name__last}}"
+#            location:
+#              street:
+#                number: "something"
+#                name: "{{location__street__name}}"
+#              city: "{{location__city}}"
+#              state: "{{location__state}}"
+#              country: "{{location__country}}"
+#              postcode: "something"
+#            email: "{{email}}"
+#            login:
+#              uuid: "{{login__uuid}}"
+#              password: "{{login__password}}"
+#              username: "{{login__username}}"
+#            phone: "phone"
+#            nat: "{{nat}}"
+#            picture:
+#              large: "{{picture__large}}"
+#              medium: "{{picture__medium}}"
+#              thumbnail: "{{picture__thumbnail}}"
+#          capture:
+#            - json: $.id
+#              as: userId
+#          afterResponse: "printStatus"
 
 #  - name: "Login"
 #    flow:
@@ -98,6 +98,7 @@ scenarios:
 #          capture:
 #            - json: $.token
 #              as: token
+#          afterResponse: "printStatus"
 #      - get:
 #          url: "/users"
 #          headers:

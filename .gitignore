@@ -8,3 +8,4 @@ Gemfile.lock
 node-js.iml
 users.json
 users1.json
+tests/r.csv
