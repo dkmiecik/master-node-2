@@ -136,7 +136,7 @@ app.put('/user/:id', authenticateToken, async (req, res) => {
                 const { login, ...rest } = body;
                 const { password, ...restLogin } = login;
 
-                const hash = await bcrypt.hash(password, 10);
+                const hash = await bcrypt.hash(password.toString(), 10);
 
                 data = {
                     ...rest,
@@ -204,7 +204,7 @@ app.post('/user/login', async (req, res) => {
         try {
             const user = await client.db("master").collection("users").findOne({"email": login});
             if (user && user.login) {
-                const match = await bcrypt.compare(password, user.login.hash);
+                const match = await bcrypt.compare(password.toString(), user.login.hash.toString());
                 if (match) {
                     const token = generateAccessToken({ username: login });
                     res.set({
