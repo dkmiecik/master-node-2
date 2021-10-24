@@ -6,7 +6,7 @@ config:
 # Core Azure
 #  target: 'http://dktestmastercorehaproxy1.germanywestcentral.azurecontainer.io'
 # Node Azure
-  target: 'http://dktestmasternodehaproxy1.germanywestcentral.azurecontainer.io'
+#  target: 'http://dktestmasternodehaproxy1.germanywestcentral.azurecontainer.io'
   phases:
     - duration: 60
       arrivalRate: 5
@@ -54,117 +54,143 @@ config:
       - "picture__thumbnail"
       - "nat"
 scenarios:
-#  - name: "Create User"
-#    flow:
-#      - post:
-#          url: "/user"
-#          json:
-#            gender: "{{gender}}"
-#            name:
-#              title: "{{name__title}}"
-#              first: "{{name__first}}"
-#              last: "{{name__last}}"
-#            location:
-#              street:
-#                number: "something"
-#                name: "{{location__street__name}}"
-#              city: "{{location__city}}"
-#              state: "{{location__state}}"
-#              country: "{{location__country}}"
-#              postcode: "something"
-#            email: "{{email}}"
-#            login:
-#              uuid: "{{login__uuid}}"
-#              password: "{{login__password}}"
-#              username: "{{login__username}}"
-#            phone: "phone"
-#            nat: "{{nat}}"
-#            picture:
-#              large: "{{picture__large}}"
-#              medium: "{{picture__medium}}"
-#              thumbnail: "{{picture__thumbnail}}"
-#          capture:
-#            - json: $.id
-#              as: userId
-#          afterResponse: "printStatus"
+  - name: "Create User"
+    flow:
+      - post:
+          url: "/user"
+          json:
+            gender: "{{gender}}"
+            name:
+              title: "{{name__title}}"
+              first: "{{name__first}}"
+              last: "{{name__last}}"
+            location:
+              street:
+                number: "something"
+                name: "{{location__street__name}}"
+              city: "{{location__city}}"
+              state: "{{location__state}}"
+              country: "{{location__country}}"
+              postcode: "something"
+            email: "{{email}}"
+            login:
+              uuid: "{{login__uuid}}"
+              password: "{{login__password}}"
+              username: "{{login__username}}"
+            phone: "phone"
+            nat: "{{nat}}"
+            picture:
+              large: "{{picture__large}}"
+              medium: "{{picture__medium}}"
+              thumbnail: "{{picture__thumbnail}}"
+          capture:
+            - json: $.id
+              as: userId
+          afterResponse: "printStatus"
 
-#  - name: "Login"
-#    flow:
-#      - post:
-#          url: "/user/login"
-#          json:
-#            login: "{{email}}"
-#            password: "{{login__password}}"
-#          capture:
-#            - json: $.token
-#              as: token
-#          afterResponse: "printStatus"
-#      - get:
-#          url: "/users"
-#          headers:
-#            authorization: "Bearer {{token}}"
-#      - get:
-#          url: "/user/{{login__uuid}}"
-#          headers:
-#            authorization: "Bearer {{token}}"
+  - name: "Get User"
+    flow:
+      - post:
+          url: "/user/login"
+          json:
+            login: "{{email}}"
+            password: "{{login__password}}"
+          capture:
+            - json: $.token
+              as: token
+      - get:
+          url: "/user/{{login__uuid}}"
+          headers:
+            authorization: "Bearer {{token}}"
+          afterResponse: "printStatus"
 
-#  - name: "Edit user"
-#    flow:
-#      - post:
-#          url: "/user/login"
-#          json:
-#            login: "{{email}}"
-#            password: "{{login__password}}"
-#          capture:
-#            - json: $.token
-#              as: token
-#      - patch:
-#          url: "/user/me"
-#          headers:
-#            authorization: "Bearer {{token}}"
-#          json:
-#            username: "{{login__username}}-{{login__uuid}}"
-#      - put:
-#          url: "/user/{{login__uuid}}"
-#          headers:
-#            authorization: "Bearer {{token}}"
-#          json:
-#            gender: "{{gender}}"
-#            name:
-#              title: "{{name__title}}"
-#              first: "{{name__first}}"
-#              last: "{{name__last}}"
-#            location:
-#              street:
-#                number: "number"
-#                name: "{{location__street__name}}"
-#              city: "{{location__city}}"
-#              state: "{{location__state}}"
-#              country: "{{location__country}}"
-#              postcode: "postcode"
-#            email: "{{email}}"
-#            login:
-#              uuid: "{{login__uuid}}"
-#              password: "{{login__password}}"
-#              username: "{{login__uuid}}-{{login__username}}"
-#            phone: "phone"
-#            nat: "{{nat}}"
-#            picture:
-#              large: "{{picture__large}}"
-#              medium: "{{picture__medium}}"
-#              thumbnail: "{{picture__thumbnail}}"
+  - name: "Get All Users"
+    flow:
+      - post:
+          url: "/user/login"
+          json:
+            login: "{{email}}"
+            password: "{{login__password}}"
+          capture:
+            - json: $.token
+              as: token
+      - get:
+          url: "/users"
+          headers:
+            authorization: "Bearer {{token}}"
+          afterResponse: "printStatus"
 
-#  - name: "Delete user"
-#    flow:
-#      - post:
-#          url: "/user/login"
-#          json:
-#            login: "{{email}}"
-#            password: "{{login__password}}"
-#          capture:
-#            - json: $.token
-#              as: token
-#      - delete:
-#          url: "/user/{{login__uuid}}"
-#          headers:
-#            authorization: "Bearer {{token}}"
+  - name: "Update user"
+    flow:
+      - post:
+          url: "/user/login"
+          json:
+            login: "{{email}}"
+            password: "{{login__password}}"
+          capture:
+            - json: $.token
+              as: token
+      - patch:
+          url: "/user/me"
+          headers:
+            authorization: "Bearer {{token}}"
+          json:
+            username: "{{login__username}}-{{login__uuid}}"
+          afterResponse: "printStatus"
+
+  - name: "Edit user"
+    flow:
+      - post:
+          url: "/user/login"
+          json:
+            login: "{{email}}"
+            password: "{{login__password}}"
+          capture:
+            - json: $.token
+              as: token
+      - put:
+          url: "/user/{{login__uuid}}"
+          headers:
+            authorization: "Bearer {{token}}"
+          json:
+            gender: "{{gender}}"
+            name:
+              title: "{{name__title}}"
+              first: "{{name__first}}"
+              last: "{{name__last}}"
+            location:
+              street:
+                number: "number"
+                name: "{{location__street__name}}"
+              city: "{{location__city}}"
+              state: "{{location__state}}"
+              country: "{{location__country}}"
+              postcode: "postcode"
+            email: "{{email}}"
+            login:
+              uuid: "{{login__uuid}}"
+              password: "{{login__password}}"
+              username: "{{login__uuid}}-{{login__username}}"
+            phone: "phone"
+            nat: "{{nat}}"
+            picture:
+              large: "{{picture__large}}"
+              medium: "{{picture__medium}}"
+              thumbnail: "{{picture__thumbnail}}"
+          afterResponse: "printStatus"
+
+  - name: "Delete user"
+    flow:
+      - post:
+          url: "/user/login"
+          json:
+            login: "{{email}}"
+            password: "{{login__password}}"
+          capture:
+            - json: $.token
+              as: token
+      - delete:
+          url: "/user/{{login__uuid}}"
+          headers:
+            authorization: "Bearer {{token}}"
+          afterResponse: "printStatus"

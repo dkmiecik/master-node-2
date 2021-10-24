@@ -1,94 +1,110 @@
+NodeJS - 1 maszyna (1 CPU)
+
 Scenariusz 1 Create User
 
-1 Maszyna
-
-Node
-
   Scenarios launched:  300
-  Scenarios completed: 288
-  Requests completed:  295
-  Mean response/sec: 4.98
+  Scenarios completed: 299
+  Requests completed:  300
+  Mean response/sec: 4.93
   Response time (msec):
-    min: 78
-    max: 1611
-    median: 473
-    p95: 1491.5
-    p99: 1559.1
+    min: 265
+    max: 3519
+    median: 358.5
+    p95: 1401.5
+    p99: 1441.5
   Scenario counts:
     Create User: 300 (100%)
   Codes:
-    200: 288
-    404: 6
+    200: 299
     502: 1
-  Errors:
-    ECONNRESET: 5
 
-Scenariusz 2 Login User
-
-1 Maszyna
-
-Node
+Scenariusz 2 Get User
 
   Scenarios launched:  300
-  Scenarios completed: 154
-  Requests completed:  505
-  Mean response/sec: 10.08
+  Scenarios completed: 300
+  Requests completed:  600
+  Mean response/sec: 9.95
   Response time (msec):
-    min: 122
-    max: 1847
-    median: 152
-    p95: 1317.5
-    p99: 1469.5
+    min: 124
+    max: 3509
+    median: 265
+    p95: 1380
+    p99: 1449.5
   Scenario counts:
-    Login: 300 (100%)
+    Get User: 300 (100%)
   Codes:
-    200: 462
-    404: 43
-  Errors:
-    ECONNRESET: 103
+    200: 600
 
-Scenariusz 3 Edit User
-
-1 Maszyna
-
-Node
+Scenariusz 3 Get All Users
 
   Scenarios launched:  300
-  Scenarios completed: 122
-  Requests completed:  405
-  Mean response/sec: 9.02
+  Scenarios completed: 199
+  Requests completed:  398
+  Mean response/sec: 8.28
   Response time (msec):
-    min: 125
-    max: 1874
-    median: 267
-    p95: 1335.3
-    p99: 1695.2
+    min: 127
+    max: 1517
+    median: 264
+    p95: 1290.6
+    p99: 1389.2
   Scenario counts:
-    Edit user: 300 (100%)
+    Get All Users: 300 (100%)
   Codes:
-    200: 244
-    404: 161
+    200: 398
   Errors:
-    ECONNRESET: 139
+    ECONNRESET: 101
 
-Scenariusz 4 Delete User
-
-Node
+Scenariusz 4 Update user
 
   Scenarios launched:  300
-  Scenarios completed: 115
-  Requests completed:  304
-  Mean response/sec: 6.88
+  Scenarios completed: 299
+  Requests completed:  599
+  Mean response/sec: 9.87
   Response time (msec):
-    min: 131
-    max: 1457
-    median: 196
-    p95: 1281.1
-    p99: 1436.4
+    min: 215
+    max: 1938
+    median: 287
+    p95: 1378.7
+    p99: 1463
+  Scenario counts:
+    Update user: 300 (100%)
+  Codes:
+    200: 599
+  Errors:
+    ECONNRESET: 1
+
+Scenariusz 5 Edit user
+
+  Scenarios launched:  299
+  Scenarios completed: 298
+  Requests completed:  597
+  Mean response/sec: 9.58
+  Response time (msec):
+    min: 288
+    max: 4407
+    median: 1560
+    p95: 2412.5
+    p99: 2766.4
+  Scenario counts:
+    Edit user: 299 (100%)
+  Codes:
+    200: 596
+    502: 1
+
+Scenariusz 6 Delete User
+
+  Scenarios launched:  300
+  Scenarios completed: 229
+  Requests completed:  529
+  Mean response/sec: 8.63
+  Response time (msec):
+    min: 128
+    max: 1500
+    median: 281
+    p95: 1351.2
+    p99: 1436.5
   Scenario counts:
     Delete user: 300 (100%)
   Codes:
-    200: 230
-    404: 74
-  Errors:
-    ECONNRESET: 111
+    200: 528
+    502: 1

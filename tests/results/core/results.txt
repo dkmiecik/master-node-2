@@ -1,0 +1,114 @@
+.Net Core - 1 maszyna (1 CPU)
+
+Scenariusz 1 Create User
+
+  Scenarios launched:  300
+  Scenarios completed: 256
+  Requests completed:  256
+  Mean response/sec: 4.98
+  Response time (msec):
+    min: 300
+    max: 2287
+    median: 1044.5
+    p95: 1941.5
+    p99: 2140.7
+  Scenario counts:
+    Create User: 300 (100%)
+  Codes:
+    200: 256
+  Errors:
+    ECONNRESET: 44
+
+
+Scenariusz 2 Get User
+
+  Scenarios launched:  300
+  Scenarios completed: 194
+  Requests completed:  388
+  Mean response/sec: 8.19
+  Response time (msec):
+    min: 128
+    max: 2194
+    median: 316
+    p95: 1428.7
+    p99: 1885.1
+  Scenario counts:
+    Get User: 300 (100%)
+  Codes:
+    200: 388
+  Errors:
+    ECONNRESET: 106
+
+Scenariusz 3 Get All Users
+
+  Scenarios launched:  291
+  Scenarios completed: 291
+  Requests completed:  582
+  Mean response/sec: 9.42
+  Response time (msec):
+    min: 214
+    max: 3544
+    median: 538
+    p95: 2217.8
+    p99: 3062.4
+  Scenario counts:
+    Get All Users: 291 (100%)
+  Codes:
+    200: 582
+
+
+Scenariusz 4 Update user
+
+  Scenarios launched:  300
+  Scenarios completed: 300
+  Requests completed:  600
+  Mean response/sec: 9.71
+  Response time (msec):
+    min: 211
+    max: 2634
+    median: 327
+    p95: 1789
+    p99: 2252
+  Scenario counts:
+    Update user: 300 (100%)
+  Codes:
+    200: 600
+
+Scenariusz 5 Edit user
+
+  Scenarios launched:  284
+  Scenarios completed: 198
+  Requests completed:  255
+  Mean response/sec: 5.66
+  Response time (msec):
+    min: 251
+    max: 5397
+    median: 1314
+    p95: 3900
+    p99: 4084.7
+  Scenario counts:
+    Edit user: 284 (100%)
+  Codes:
+    200: 255
+  Errors:
+    ECONNRESET: 86
+
+
+Scenariusz 6 Delete User
+
+  Scenarios launched:  283
+  Scenarios completed: 173
+  Requests completed:  372
+  Mean response/sec: 7.56
+  Response time (msec):
+    min: 222
+    max: 4496
+    median: 433
+    p95: 3176.8
+    p99: 3661.8
+  Scenario counts:
+    Delete user: 283 (100%)
+  Codes:
+    200: 372
+  Errors:
+    ECONNRESET: 84
